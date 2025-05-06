@@ -52,5 +52,19 @@ document.getElementById('style-toggle').addEventListener('click', () => {
     }
 });
 </script>
+<script>
+document.getElementById("sidebar-toggle").addEventListener("click", () => {
+    const sidebar = document.getElementById("sidebar");
+    const backdrop = document.getElementById("sidebar-backdrop");
+
+    sidebar.classList.toggle("sidebar-open");
+    backdrop.classList.toggle("active");
+});
+
+document.getElementById("sidebar-backdrop").addEventListener("click", () => {
+    document.getElementById("sidebar").classList.remove("sidebar-open");
+    document.getElementById("sidebar-backdrop").classList.remove("active");
+});
+</script>
 </body>
 </html>
