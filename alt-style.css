@@ -1,1 +1,221 @@
-csss
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: 'Fira Mono', 'Consolas', monospace;
+    background: #ffffff;
+    color: #111111;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+#sidebar-toggle {
+    position: fixed;
+    top: 1rem;
+    left: 1rem;
+    z-index: 1100;
+    width: 2.5rem;
+    height: 2.5rem;
+    font-size: 2rem;
+    background: #ffffff;
+    color: #111111;
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    /* display: none; /* Hidden on desktop by default, shown on mobile */
+}
+
+#style-toggle {
+    position: fixed;
+    top: 1rem;
+    left: 1rem;
+    z-index: 1100;
+    width: 2.5rem;
+    height: 2.5rem;
+    font-size: 2rem;
+    background: #ffffff;
+    color: #111111;
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    /* display: none; /* Hidden on desktop by default, shown on mobile */
+}
+
+.sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 180px;
+    height: 100vh;
+    background: #ffffff;
+    border-right: 1px solid #111111;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transform: translateX(0);
+    transition: transform 0.2s;
+}
+
+.sidebar-content {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 2em;
+}
+
+.sidebar-group {
+    margin: 20px 0;
+    cursor: pointer;
+    padding: 10px;
+    transition: background 0.2s;
+    border-radius: 0.3em;
+}
+.sidebar-group.active, .sidebar-group:hover {
+    background: #ffffff;
+}
+
+.sidebar-btn {
+    margin: 10px;
+    background: none;
+    color: #111111;
+    border: none;
+    font-size: 1em;
+    cursor: pointer;
+}
+
+.main-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    margin-left: 180px;
+    padding: 2rem 1rem 1rem 1rem;
+    min-width: 0;
+    min-height: 0;
+    transition: margin-left 0.2s;
+}
+
+@media (max-width: 700px) {
+    .main-content {
+        margin-left: 0;
+        padding: 1rem;
+    }
+}
+
+/* Make the pda-container fill the available vertical space */
+.pda-container {
+    background: #ffffff;
+    border: 1px solid #ffffff;
+    border-radius: 0.5em;
+    padding: 1em;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+}
+
+/* Make chatbox fill all space above input */
+.chatbox {
+    flex: 1;
+    min-height: 0;
+    overflow-y: auto;
+    background: #ffffff;
+    border: 1px solid #ffffff;
+    margin-bottom: 1em;
+    padding: 1em;
+    font-size: 1.15em;
+    border-radius: 0.5em;
+    word-break: break-word;
+}
+
+.chat-input-bar {
+    display: flex;
+    gap: 0.5em;
+    width: 100%;
+}
+
+#message {
+    flex: 1;
+    border-radius: 1em 0 0 1em;
+    padding: 0.7em 1.2em;
+    border: 1px solid #ffffff;
+    background: #ffffff;
+    color: #111111;
+    font-size: 1.1em;
+    border-right: none;
+    min-width: 0;
+}
+
+#sendBtn {
+    background: #ffffff;
+    color: #111111;
+    border: 1px solid #ffffff;
+    border-radius: 0 1em 1em 0;
+    width: 3em;
+    font-size: 1.2em;
+    cursor: pointer;
+    border-left: none;
+}
+
+/* Fill the whole viewport if sidebar is hidden */
+body.no-sidebar .main-content {
+    margin-left: 0 !important;
+    width: 100vw;
+    max-width: 100vw;
+}
+body.no-sidebar .pda-container {
+    width: 100%;
+    height: 100%;
+    min-height: 0;
+}
+body.no-sidebar .chatbox {
+    height: 100%;
+    min-height: 0;
+}
+
+/* Responsive tweaks */
+@media (max-width: 700px) {
+    #sidebar-toggle {
+        display: block;
+    }
+    .sidebar {
+        transform: translateX(-100%);
+    }
+    .sidebar.open {
+        transform: translateX(0);
+    }
+    .main-content {
+        margin-left: 0;
+        padding: 1rem;
+    }
+    .pda-container {
+        padding: 0.5em;
+    }
+    .chatbox {
+        font-size: 1em;
+        padding: 0.5em;
+    }
+}
+
+@media (max-width: 450px) {
+    .title {
+        font-size: 1.2em;
+    }
+}
+
+/* For accessibility: overlay on sidebar open */
+.sidebar-backdrop {
+    display: none;
+}
+.sidebar-backdrop.active {
+    display: block;
+    position: fixed;
+    z-index: 900;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.4);
+}
