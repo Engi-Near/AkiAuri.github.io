@@ -29,6 +29,22 @@ body {
     /* display: none; /* Hidden on desktop by default, shown on mobile */
 }
 
+#style-toggle {
+    position: fixed;
+    top: 1rem;
+    left: 1rem;
+    z-index: 1100;
+    width: 2.5rem;
+    height: 2.5rem;
+    font-size: 2rem;
+    background: #181818;
+    color: #fff;
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    /* display: none; /* Hidden on desktop by default, shown on mobile */
+}
+
 .sidebar {
     position: fixed;
     left: 0;
